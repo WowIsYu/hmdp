@@ -85,7 +85,7 @@ public class CacheClient {
     }
 
     public <R, ID> R queryWithLogicalExpire(String keyPrefix, ID id, Class<R> type, Function<ID, R> dbFallback, Long time, TimeUnit unit) {
-        String key = RedisConstants.CACHE_SHOP_KEY + id;
+        String key = keyPrefix + id;
         // 从redis查询商铺缓存
         String shopJson = stringRedisTemplate.opsForValue().get(key);
 
